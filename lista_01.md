@@ -23,7 +23,7 @@ print(a)
 
 Escolha a opção que responde corretamente:
 
-a) Imprime os números pares de 1 a 10.
+˜˜a) Imprime os números pares de 1 a 10.˜˜
 
 b) Imprime os números ímpares de 1 a 10.
 
@@ -55,7 +55,7 @@ ______
 
 Escolha a opção que responde corretamente:
 
-A) 18
+˜˜A) 18˜˜
 
 B) 16
 
@@ -67,7 +67,7 @@ ______
 
 **4)** Como você criaria um método `acelerar()` em uma classe `Carro`, que recebe um parâmetro `velocidade` e o adiciona a um atributo `velocidadeAtual`?
 
-A) ![Uma imagem](assets/ex04_1.PNG)
+˜˜A)˜˜ ![Uma imagem](assets/ex04_1.PNG)
 
 B) ![Uma imagem](assets/ex04_2.PNG)
 
@@ -120,6 +120,28 @@ Criando e manipulando Animais:
 
 Dica: Utilize `console.log()` para exibir as informações!
 
+```javascript
+
+class Animal {
+    constructor (nome, idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    descrever() {
+        return (`O animal ${this.nome} tem ${this.idade} anos`)
+    }
+}
+
+let cachorro = new Animal ('cachorro', 5)
+let gato = new Animal ('gato', 8)
+
+console.log(cachorro.descrever())
+console.log('')
+console.log(gato.descrever())
+
+```
+
 ______
 
 **8)** Nos últimos dias tivemos a oportunidade de ter contato com Programação Orientada a Objetos, e tivemos contato com o tema "herança". Herança é um princípio de orientação a objetos, que permite que classes compartilhem atributos e métodos. Ela é usada na intenção de reaproveitar código ou comportamento generalizado ou especializar operações ou atributos. Então vamos praticar esse conteúdo nessa questão.
@@ -145,6 +167,34 @@ Chamando os Métodos:
 
 Dica: Utilize console.log() para exibir as informações!
 
+```javascript
+class Animal {
+    constructor (nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    descrever() {
+        return (`o animal ${this.nome} tem ${this.idade} anos`)
+    }
+}
+
+class Gato extends Animal {
+    constructor (nome, idade, cor) {
+    super (nome, idade); 
+    this.cor = cor;
+    }
+    miar() {
+        return ('"miau"')
+    }
+}
+
+let cachorro = new Animal('cachorro', 7)
+let gato = new Gato ('gato', 5, 'preto')
+
+console.log (cachorro.descrever())
+console.log (gato.descrever() + ", ele faz o som: " + gato.miar())
+```
 
 ______
 
@@ -167,6 +217,30 @@ Chamando o Método para Ver o Total:
 
 Dica: Utilize console.log() para exibir as informações!
 
+```javascript
+class SomadorDeNotas {
+    constructor() {
+       this.total = 0;
+    }
+
+    adicionarNota(nota) {
+        this.nota = nota;
+
+        this.total += this.nota
+    }
+    
+    verTotal(){
+        return (this.total)
+    }
+}
+
+let somador = new SomadorDeNotas()
+somador.adicionarNota(7)
+somador.adicionarNota(4)
+somador.adicionarNota(8)
+console.log (somador.verTotal())
+```
+
 
 ______
 
@@ -188,3 +262,41 @@ Agora, sua tarefa é escrever um código em JavaScript que crie as classes Funci
 - Para cada objeto, chame o método calcularSalario() e mostre o salário calculado no console.
 
 Certifique-se de explicar cada parte do código utilizando comentários, explicando para que serve cada atributo e método, bem como a lógica por trás do cálculo de salário para o tipo de funcionário Professor.
+
+```javascript
+class Funcionario { 
+    //Cria uma classe funcionario com os atributos nome, idade e salario base
+    constructor (nome, idade, salarioBase) {
+        this.nome = nome; //Cria o atributo nome
+        this.idade = idade; //Cria o atributo idade
+        this.salarioBase = salarioBase; //Cria o atributo salarioBase
+    }
+
+    calcularSalario() { //Adiciona metodo para calcular salario de funcionario
+        
+    }
+}
+
+class Professor extends Funcionario { //Cria a classe professor que herda a classe Funcionario
+    constructor (nome, idade, salarioBase, disciplina, horasAula) { //Define atributos para classe professor
+        super(nome, idade, salarioBase) //Quais atributos ele herda da classe funcionario
+        this.disciplina = disciplina; //Cria atributo disciplina
+        this.horasAula = horasAula; //Cria atributo horasAula
+    }
+
+    calcularSalario(){ //Cria metodo calcular salario para os professores
+        return (this.salarioBase += this.horasAula * 50) //Calcula o salario
+    }
+
+    descricao(){ //Cria um metodo de descricao para o professor
+        return (`O professor ${this.nome} tem ${this.idade} anos, e é professor da disciplina ${this.disciplina}, seu salario base é ${this.salarioBase} e ele trabalha ${this.horasAula} horas, ganhando um total de `)
+    }
+
+}
+
+let professor1 = new Professor ('Carlos', 35, 5000, 'Matematica', 48) //cria professor 1
+let professor2 = new Professor ('Pedro', 33, 3300, 'Fisica', 20) //cria professor 2
+
+console.log(professor1.descricao() + professor1.calcularSalario() + ' R$') //Imprime a descricao e o salario total do professor 1
+console.log(professor2.descricao() + professor2.calcularSalario() + ' R$') //Imprime a descricao e o salario total do professor 2
+```
